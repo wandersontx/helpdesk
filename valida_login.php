@@ -1,5 +1,11 @@
 <?php
 
+//instancia de um session que serve para comunicação do servidor com cliente (browser)
+ session_start();
+$_SESSION;
+
+
+
 $usuario_autenticado = false; 
 
 $email = $_POST["email"];
@@ -19,11 +25,14 @@ $senha = $_POST["senha"];
 	}
 
 	if($usuario_autenticado){
-		echo "<h2>usuario atenticado</h2>";
+		//caso usuario esteja autenticao, criar um indice 'autenticado' na variavel global $_SESSION com valor 'SIM'
+		echo "pagina valida login";
+		$_SESSION['autenticado'] = 'SIM';
 	}
 	else{
 		//função do php que indica um caminho 
 		header('Location: index.php?login=erro');
+		$_SESSION['autenticado'] = 'NAO';
 	}
 
 ?>

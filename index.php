@@ -48,11 +48,20 @@
                 
                  
                  <? //verifica se o array esta setado - muito utilizado para verifcar se foi passado algum parametro por get ou post
-                  if(isset($_GET['login']) && $_GET['login'] == 'erro'){?>
+                  if(isset($_GET['login']) && $_GET['login'] == 'erro'){
                                   
-                  <div class ="text-danger">Usuário ou senha inválidos</div>
+                  echo "<div class ='text-danger'>Usuário ou senha inválidos</div>";
 
-                  <?  } ?>
+                   } ?>
+
+                    <? 
+                  if(isset($_GET['login']) && $_GET['login'] == 'erro2'){
+                                  
+                  echo "<div class ='text-danger'>Faça login antes de acessar as paginas protegidas</div>";
+
+                   } ?>
+
+
 
 
                 <button class="btn btn-lg btn-info btn-block" type="submit">Entrar</button>
