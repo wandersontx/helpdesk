@@ -1,20 +1,29 @@
 <?php
 
-//um formulario se transforma em array associativo quando enviado via url
-/*print_r($_GET);
+$usuario_autenticado = false; 
 
-echo "<br><hr>";
-echo $email = $_GET["email"];
-echo "<br>";
-echo $senha = $_GET["senha"];
-*/
+$email = $_POST["email"];
+$senha = $_POST["senha"];
 
-//Metodo post envita que os dados enviado por formulario sejam visto na url do navegador.
-print_r($_POST);
+	$usuario_app = array(
+		array('email' => 'adm@teste.com.br', 'senha' => '123456'),
+		array('email' => 'user@teste.com.br', 'senha' => 'abcd'),
+		array('email' => 'wanderson@gmail.com', 'senha' => '99')
+	);
+	
 
-echo "<br><hr>";
+	foreach($usuario_app as $user){
+		if($user['email'] == $email && $user['senha'] == $senha){
+			$usuario_autenticado = true;
+		}
+	}
 
-echo $email = $_POST["email"];
-echo "<br>";
-echo $senha = $_POST["senha"];
+	if($usuario_autenticado){
+		echo "<h2>usuario atenticado</h2>";
+	}
+	else{
+		//função do php que indica um caminho 
+		header('Location: index.php?login=erro');
+	}
+
 ?>
