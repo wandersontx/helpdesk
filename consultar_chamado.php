@@ -1,10 +1,5 @@
-<?php
-//caso usuario não esteja auttenciado, retonar a pagina index.php exibindo erro ao usuario.
-session_start();
-if(!isset($_SESSION['autenticado']) || $_SESSION['autenticado'] != 'SIM'){
-header('Location: index.php?login=erro2');
+<? require_once 'validador_acesso.php';?>
 
-}
 
 ?>
 <html>
@@ -63,7 +58,7 @@ header('Location: index.php?login=erro2');
 
               <div class="row mt-5">
                 <div class="col-6">
-                  <button class="btn btn-lg btn-warning btn-block" type="submit">Voltar</button>
+                  <a class="btn btn-lg btn-warning btn-block" href="home.php">Voltar</a>
                 </div>
               </div>
             </div>

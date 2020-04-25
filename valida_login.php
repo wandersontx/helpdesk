@@ -25,9 +25,8 @@ $senha = $_POST["senha"];
 	}
 
 	if($usuario_autenticado){
-		//caso usuario esteja autenticao, criar um indice 'autenticado' na variavel global $_SESSION com valor 'SIM'
-		echo "pagina valida login";
 		$_SESSION['autenticado'] = 'SIM';
+		header('Location: home.php');		
 	}
 	else{
 		//função do php que indica um caminho 
