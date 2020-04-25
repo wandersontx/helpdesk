@@ -25,6 +25,11 @@
         <img src="logo.png" width="30" height="30" class="d-inline-block align-top" alt="">
         App Help Desk
       </a>
+            <ul class="navbar-nav">
+        <li class="navbar-nar">
+          <a class="nav-link" href="logoff.php">Sair</a>
+        </li>
+      </ul>
     </nav>
 
     <div class="container">    
@@ -33,7 +38,7 @@
         <div class="card-consultar-chamado">
           <div class="card">
             <div class="card-header">
-              Consulta de chamado
+              Consulta de chamado              
             </div>
             
             <div class="card-body">

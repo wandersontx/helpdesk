@@ -26,6 +26,8 @@ $senha = $_POST["senha"];
 
 	if($usuario_autenticado){
 		$_SESSION['autenticado'] = 'SIM';
+		$_SESSION['x'] = 'um valor';
+		$_SESSION['y'] =  'outro valor';
 		header('Location: home.php');		
 	}
 	else{
