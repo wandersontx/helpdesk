@@ -1,7 +1,24 @@
 <? require_once 'validador_acesso.php';?>
 
+<?php
+
+  $arquivo = fopen('arquivo.hd','r');
+
+  $chamados = array();
+
+  //feof()testa pelo fim do arquivo
+  while(!feof($arquivo)){
+
+    //recuperar a linha do arquivo, pode ler até encontrar a quebra de linha PHP.EOL ou ler até certa qtd de bits passado por parametro fgets($arquivo, 2400);
+    $registro  = fgets($arquivo);
+    $chamados[] = $registro;
+  }
+
+  //fechando o arquivo
+  fclose($arquivo);
 
 ?>
+
 <html>
   <head>
     <meta charset="utf-8" />
@@ -42,24 +59,26 @@
             </div>
             
             <div class="card-body">
+
+              <? foreach ($chamados as $chamados) {?>
+
+              <?php
+               $chamado_dados = explode('#',$chamados);
+
+               if(count($chamado_dados)<3)
+                continue;
               
+               ?>
               <div class="card mb-3 bg-light">
                 <div class="card-body">
-                  <h5 class="card-title">Título do chamado...</h5>
-                  <h6 class="card-subtitle mb-2 text-muted">Categoria</h6>
-                  <p class="card-text">Descrição do chamado...</p>
+                  <h5 class="card-title"><?=$chamado_dados[0]?></h5>
+                  <h6 class="card-subtitle mb-2 text-muted"><?=$chamado_dados[1]?></h6>
+                  <p class="card-text"><?=$chamado_dados[2] ?></p>
 
                 </div>
-              </div>
+              </div> 
 
-              <div class="card mb-3 bg-light">
-                <div class="card-body">
-                  <h5 class="card-title">Título do chamado...</h5>
-                  <h6 class="card-subtitle mb-2 text-muted">Categoria</h6>
-                  <p class="card-text">Descrição do chamado...</p>
-
-                </div>
-              </div>
+             <? } ?>             
 
               <div class="row mt-5">
                 <div class="col-6">
