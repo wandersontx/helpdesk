@@ -1,8 +1,8 @@
 <? require_once 'validador_acesso.php';?>
 
 <?php
-
-  $arquivo = fopen('arquivo.hd','r');
+  
+   $arquivo = fopen('arquivo.hd','r');
 
   $chamados = array();
 
@@ -11,11 +11,21 @@
 
     //recuperar a linha do arquivo, pode ler até encontrar a quebra de linha PHP.EOL ou ler até certa qtd de bits passado por parametro fgets($arquivo, 2400);
     $registro  = fgets($arquivo);
-    $chamados[] = $registro;
+      
+
+      $comparaLinha = explode('#', $registro);
+    
+       if($_SESSION['perfil_id'] == 2)
+         if($comparaLinha[0] != $_SESSION['id'])
+           continue;
+    
+     $chamados[] = $registro;
   }
 
   //fechando o arquivo
   fclose($arquivo);
+
+ 
 
 ?>
 
@@ -64,6 +74,7 @@
 
               <?php
                $chamado_dados = explode('#',$chamados);
+           
 
                if(count($chamado_dados)<3)
                 continue;
@@ -71,9 +82,9 @@
                ?>
               <div class="card mb-3 bg-light">
                 <div class="card-body">
-                  <h5 class="card-title"><?=$chamado_dados[0]?></h5>
-                  <h6 class="card-subtitle mb-2 text-muted"><?=$chamado_dados[1]?></h6>
-                  <p class="card-text"><?=$chamado_dados[2] ?></p>
+                  <h5 class="card-title"><?=$chamado_dados[1]?></h5>
+                  <h6 class="card-subtitle mb-2 text-muted"><?=$chamado_dados[2]?></h6>
+                  <p class="card-text"><?=$chamado_dados[3] ?></p>
 
                 </div>
               </div> 
